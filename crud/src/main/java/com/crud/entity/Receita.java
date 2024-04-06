@@ -24,7 +24,7 @@ public class Receita {
     @Column(name = "ingredientes", nullable = false)
     private String ingredientes;
 
-    @Column(name = "modoPreparo", nullable = false)
+    @Column(name = "modoPreparo", nullable = false, length = 10000)
     private String modoPreparo;
 
     @Column(name = "tempoPreparo", nullable = false)
