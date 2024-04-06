@@ -8,7 +8,7 @@ public class ReceitaDTO {
     private String nome;
     private String ingredientes;
     private String modoPreparo;
-    private LocalTime tempoPreparo;
+    private int tempoPreparo;
     private String rendimento;
     private int categoria;
 }

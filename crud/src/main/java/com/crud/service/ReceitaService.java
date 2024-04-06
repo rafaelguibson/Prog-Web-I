@@ -1,6 +1,7 @@
 package com.crud.service;
 import com.crud.dto.ReceitaDTO;
 import com.crud.entity.Receita;
+import com.crud.exception.*;
 import com.crud.mapper.ReceitaMapper;
 import com.crud.repository.ReceitaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
 public class ReceitaService {
     @Autowired
@@ -17,14 +19,14 @@ public class ReceitaService {
 
     @Transactional
     public Receita salvar(ReceitaDTO receitaDTO) {
-//        validarCampos(receitaDTO);
+        validarCampos(receitaDTO);
         Receita receita = ReceitaMapper.INSTANCE.toEntity(receitaDTO);
         return receitaRepository.save(receita);
     }
 
     @Transactional
     public Receita atualizar(Long id, ReceitaDTO receitaDTO) {
-//        validarCampos(receitaDTO);
+        validarCampos(receitaDTO);
         Receita receitaExistente = buscarPorId(id);
         receitaExistente.setNome(receitaDTO.getNome());
         receitaExistente.setIngredientes(receitaDTO.getIngredientes());
@@ -39,7 +41,7 @@ public class ReceitaService {
     public Receita buscarPorId(Long id) {
         Optional<Receita> optionalReceita = receitaRepository.findById(id);
         if (optionalReceita.isEmpty()) {
-
+            throw new ReceitaNaoEncontradaException();
         }
         return optionalReceita.get();
     }
@@ -55,4 +57,22 @@ public class ReceitaService {
         receitaRepository.delete(receita);
     }
 
+    private void validarCampos(ReceitaDTO receitaDTO) {
+        if (receitaDTO.getNome() == null || receitaDTO.getNome().isEmpty()) {
+            throw new NomeInvalidoException();
+        }
+        if (receitaDTO.getIngredientes() == null || receitaDTO.getIngredientes().isEmpty()) {
+            throw new IngredientesInvalidosException();
+        }
+        if (receitaDTO.getTempoPreparo() < 0) {
+            throw new TempoPreparoInvalidoException();
+        }
+        if (receitaDTO.getRendimento().isEmpty()) {
+            throw new RendimentoInvalidoException();
+        }
+    }
+    public ReceitaDTO toDTO(Receita receita) {
+        return ReceitaMapper.INSTANCE.toDTO(receita);
+    }
 }
+

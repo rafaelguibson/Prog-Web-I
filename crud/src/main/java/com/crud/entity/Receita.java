@@ -28,7 +28,7 @@ public class Receita {
     private String modoPreparo;
 
     @Column(name = "tempoPreparo", nullable = false)
-    private LocalTime tempoPreparo;
+    private int tempoPreparo;
 
     @Column(name = "rendimento", nullable = false)
     private String rendimento;
