@@ -1,13 +1,13 @@
-package com.progweb.progweb;
+package com.crud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProgwebApplication {
+public class CrudApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProgwebApplication.class, args);
+		SpringApplication.run(CrudApplication.class, args);
 	}
 
 }

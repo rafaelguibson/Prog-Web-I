@@ -1,10 +1,10 @@
-package com.progweb.progweb;
+package com.crud;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ProgwebApplicationTests {
+class CrudApplicationTests {
 
 	@Test
 	void contextLoads() {
