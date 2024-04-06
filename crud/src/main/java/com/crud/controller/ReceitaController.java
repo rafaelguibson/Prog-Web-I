@@ -64,4 +64,29 @@ public class ReceitaController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(), e);
         }
     }
+
+    @ExceptionHandler(NomeInvalidoException.class)
+    public ResponseEntity<String> handleNomeInvalido(NomeInvalidoException e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
+
+    @ExceptionHandler(IngredientesInvalidosException.class)
+    public ResponseEntity<String> handleIngredientesInvalidos(IngredientesInvalidosException e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
+
+    @ExceptionHandler(ReceitaNaoEncontradaException.class)
+    public ResponseEntity<String> handleReceitaNaoEncontrada(ReceitaNaoEncontradaException e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
+
+    @ExceptionHandler(RendimentoInvalidoException.class)
+    public ResponseEntity<String> handleRendimentoInvalido(ReceitaNaoEncontradaException e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
+
+    @ExceptionHandler(TempoPreparoInvalidoException.class)
+    public ResponseEntity<String> handleTempoPreparoInvalido(TempoPreparoInvalidoException e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
 }
