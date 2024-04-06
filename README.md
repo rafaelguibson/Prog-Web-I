@@ -1,5 +1,7 @@
 ## Cadastros Para Teste
-
+> [!NOTE]
+> Registros JSON para facilitar o teste dos endpoints.
+> 
 ### // Cadastro 1
 {
   "nome": "Bolo de Cenoura",
