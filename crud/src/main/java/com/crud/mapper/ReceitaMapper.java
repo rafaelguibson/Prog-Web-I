@@ -5,14 +5,13 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface ReceitaMapper {
     ReceitaMapper INSTANCE = Mappers.getMapper(ReceitaMapper.class);
 
-    @Mapping(target = "categoria", ignore = true)
+
     ReceitaDTO toDTO(Receita receita);
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "categoria", ignore = true)
     Receita toEntity(ReceitaDTO receitaDTO);
 }
