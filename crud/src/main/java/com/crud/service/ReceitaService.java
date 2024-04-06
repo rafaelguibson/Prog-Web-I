@@ -24,7 +24,7 @@ public class ReceitaService {
 
     @Transactional
     public Receita atualizar(Long id, ReceitaDTO receitaDTO) {
-        validarCampos(receitaDTO);
+//        validarCampos(receitaDTO);
         Receita receitaExistente = buscarPorId(id);
         receitaExistente.setNome(receitaDTO.getNome());
         receitaExistente.setIngredientes(receitaDTO.getIngredientes());
