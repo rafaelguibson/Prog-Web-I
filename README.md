@@ -1,7 +1,8 @@
 ## Cadastros Para Teste
 > [!NOTE]
 > Registros JSON para facilitar o teste dos endpoints.
-> 
+>
+
 ### // Cadastro 1
 {
   "nome": "Bolo de Cenoura",
@@ -11,6 +12,22 @@
   "rendimento": "12 porções",
   "categoria": 5
 }
+
+<details>
+
+<summary>Cadastro 1</summary>
+
+### Cadastro Receita 01
+
+{
+  "nome": "Bolo de Cenoura",
+  "ingredientes": "3 cenouras, 3 ovos, 1 xícara de óleo, 2 xícaras de açúcar, 2 xícaras de farinha de trigo, 1 colher de fermento em pó",
+  "modoPreparo": "Bata no liquidificador as cenouras, os ovos e o óleo. Em seguida, adicione o açúcar e a farinha e bata novamente. Por último, acrescente o fermento e misture com uma colher. Despeje em uma forma untada e leve ao forno pré-aquecido a 180°C por aproximadamente 40 minutos.",
+  "tempoPreparo": 40,
+  "rendimento": "12 porções",
+  "categoria": 5
+}
+</details>
 
 ### // Cadastro 2
 {
