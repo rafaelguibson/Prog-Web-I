@@ -1,0 +1,49 @@
+body {
+  min-height: 100vh;
+}
+a {
+  text-decoration: none;
+}
+.custom-toolbar {
+  color: #ECEBE9;
+  background: #212129;
+}
+.header-space {
+  flex: 1 1 auto;
+}
+.header-title {
+  color: #ECEBE9;
+  font-size: 1.55em;
+  text-shadow: 2px 2px 4px rgb(48, 48, 58);
+  -webkit-text-stroke: 0.3px #259a8f;
+}
+.header-home {
+  color: #ECEBE9;
+}
+.header-text {
+  color: #212129;
+  padding-left: 10px;
+  font-size: 1.35em;
+  text-shadow: 2px 2px 4px rgba(108, 103, 103, 0.47);
+}
+.header-icon {
+  font-size: 1.35em;
+  text-shadow: 2px 2px 4px rgb(48, 48, 58);
+  color: #212129;
+}
+
+.mat-drawer-container {
+  background: #ECEBE9;
+  .mat-drawer-content {
+    text-align: center;
+    min-height: calc(100vh - 64px);
+    padding: 15px;
+
+  }
+}
+.mat-drawer {
+  background: #ECEBE9;
+}
+.full-width {
+  width: 100%;
+}
