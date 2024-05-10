@@ -1,4 +1,4 @@
-package com.crud.dto;
+package com.crud.model.dto;
 import lombok.Data;
 
 import java.time.LocalTime;

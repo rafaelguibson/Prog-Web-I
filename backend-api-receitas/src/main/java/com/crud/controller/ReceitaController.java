@@ -1,13 +1,12 @@
 package com.crud.controller;
-import com.crud.dto.ReceitaDTO;
-import com.crud.entity.Receita;
-import com.crud.exception.*;
+
+import com.crud.model.Receita;
+import com.crud.model.dto.ReceitaDTO;
 import com.crud.service.ReceitaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -19,34 +18,21 @@ public class ReceitaController {
 
     @PostMapping
     public ResponseEntity<Receita> salvar(@RequestBody ReceitaDTO receitaDTO) {
-        try {
-            Receita novaReceita = receitaService.salvar(receitaDTO);
-            return new ResponseEntity<>(novaReceita, HttpStatus.CREATED);
-        } catch (NomeInvalidoException | IngredientesInvalidosException | TempoPreparoInvalidoException | RendimentoInvalidoException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage(), e);
-        }
+        Receita novaReceita = receitaService.salvar(receitaDTO);
+        return new ResponseEntity<>(novaReceita, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Receita> atualizar(@PathVariable Long id, @RequestBody ReceitaDTO receitaDTO) {
-        try {
-            Receita receitaAtualizada = receitaService.atualizar(id, receitaDTO);
-            return new ResponseEntity<>(receitaAtualizada, HttpStatus.OK);
-        } catch (ReceitaNaoEncontradaException | NomeInvalidoException | IngredientesInvalidosException |
-                 TempoPreparoInvalidoException | RendimentoInvalidoException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage(), e);
-        }
+        Receita receitaAtualizada = receitaService.atualizar(id, receitaDTO);
+        return new ResponseEntity<>(receitaAtualizada, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ReceitaDTO> buscarPorId(@PathVariable Long id) {
-        try {
-            Receita receita = receitaService.buscarPorId(id);
-            ReceitaDTO receitaDTO = receitaService.toDTO(receita);
-            return new ResponseEntity<>(receitaDTO, HttpStatus.OK);
-        } catch (ReceitaNaoEncontradaException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(), e);
-        }
+        Receita receita = receitaService.buscarPorId(id);
+        ReceitaDTO receitaDTO = receitaService.toDTO(receita);
+        return new ResponseEntity<>(receitaDTO, HttpStatus.OK);
     }
 
     @GetMapping
@@ -57,36 +43,7 @@ public class ReceitaController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable Long id) {
-        try {
-            receitaService.excluir(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (ReceitaNaoEncontradaException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(), e);
-        }
-    }
-
-    @ExceptionHandler(NomeInvalidoException.class)
-    public ResponseEntity<String> handleNomeInvalido(NomeInvalidoException e) {
-        return ResponseEntity.badRequest().body(e.getMessage());
-    }
-
-    @ExceptionHandler(IngredientesInvalidosException.class)
-    public ResponseEntity<String> handleIngredientesInvalidos(IngredientesInvalidosException e) {
-        return ResponseEntity.badRequest().body(e.getMessage());
-    }
-
-    @ExceptionHandler(ReceitaNaoEncontradaException.class)
-    public ResponseEntity<String> handleReceitaNaoEncontrada(ReceitaNaoEncontradaException e) {
-        return ResponseEntity.badRequest().body(e.getMessage());
-    }
-
-    @ExceptionHandler(RendimentoInvalidoException.class)
-    public ResponseEntity<String> handleRendimentoInvalido(ReceitaNaoEncontradaException e) {
-        return ResponseEntity.badRequest().body(e.getMessage());
-    }
-
-    @ExceptionHandler(TempoPreparoInvalidoException.class)
-    public ResponseEntity<String> handleTempoPreparoInvalido(TempoPreparoInvalidoException e) {
-        return ResponseEntity.badRequest().body(e.getMessage());
+        receitaService.excluir(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

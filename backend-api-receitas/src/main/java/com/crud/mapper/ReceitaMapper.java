@@ -1,6 +1,6 @@
 package com.crud.mapper;
-import com.crud.dto.ReceitaDTO;
-import com.crud.entity.Receita;
+import com.crud.model.dto.ReceitaDTO;
+import com.crud.model.Receita;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;

@@ -1,6 +1,6 @@
 package com.crud.service;
-import com.crud.dto.ReceitaDTO;
-import com.crud.entity.Receita;
+import com.crud.model.dto.ReceitaDTO;
+import com.crud.model.Receita;
 import com.crud.exception.*;
 import com.crud.mapper.ReceitaMapper;
 import com.crud.repository.ReceitaRepository;
@@ -69,6 +69,10 @@ public class ReceitaService {
         }
         if (receitaDTO.getRendimento().isEmpty()) {
             throw new RendimentoInvalidoException();
+        }
+        Receita receitaExistente = receitaRepository.findByNome(receitaDTO.getNome());
+        if (receitaExistente != null) {
+            throw new NomeRepetidoException(receitaDTO.getNome());
         }
     }
     public ReceitaDTO toDTO(Receita receita) {

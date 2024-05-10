@@ -1,4 +1,4 @@
-package com.crud.entity;
+package com.crud.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,19 +6,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalTime;
-
 @Entity
-@Table(name = "receita")
+@Table(name = "RECEITA")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Receita {
+public class Receita implements GenericModel<Long>{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "nome", nullable = false)
+
+    @Column(name = "nome", nullable = false, unique = true)
     private String nome;
 
     @Column(name = "ingredientes", nullable = false)
