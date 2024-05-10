@@ -9,12 +9,14 @@ import {MatToolbar} from "@angular/material/toolbar";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import { DatatableComponent } from './component/datatable/datatable.component';
+import { RegisterDialogComponent } from './component/register-dialog/register-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    DatatableComponent
+    DatatableComponent,
+    RegisterDialogComponent
   ],
   imports: [
     BrowserModule,
