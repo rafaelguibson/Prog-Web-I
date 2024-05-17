@@ -47,3 +47,11 @@
   margin-right: 30px;
   border: 1px solid #212129;
 }
+
+.panel-body {
+  padding-top: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
