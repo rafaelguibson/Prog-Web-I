@@ -10,10 +10,5 @@ import {RegisterDialogComponent} from "../../component/register-dialog/register-
 export class NavbarComponent {
   constructor(public dialog: MatDialog) {}
 
-  openDialog(): void {
-    this.dialog.open(RegisterDialogComponent, {
-      width: '800px',
-      height: '500px'
-    });
-  }
+
 }

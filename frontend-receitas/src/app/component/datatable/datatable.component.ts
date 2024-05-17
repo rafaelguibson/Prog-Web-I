@@ -3,6 +3,7 @@ import {Receita} from "../../models/receita";
 import {ReceitaHttpclienteService} from "../../service/receita-httpcliente.service";
 import {DialogDeleteComponent} from "../dialog-delete/dialog-delete.component";
 import {MatDialog} from "@angular/material/dialog";
+import {RegisterDialogComponent} from "../register-dialog/register-dialog.component";
 
 @Component({
   selector: 'app-datatable',
@@ -18,6 +19,13 @@ export class DatatableComponent implements OnInit{
   ngOnInit(): void {
     this.receitaService.listarTodos().subscribe((data: Receita[]) => {
       this.dataSource = data;
+    });
+  }
+
+  openDialog(): void {
+    this.dialog.open(RegisterDialogComponent, {
+      width: '700px',
+      height: '500px'
     });
   }
 
@@ -37,4 +45,11 @@ export class DatatableComponent implements OnInit{
   }
 
 
+  openDialogEdit(receita: Receita) {
+    this.dialog.open(RegisterDialogComponent, {
+      width: '700px',
+      height: '500px',
+      data: { receita }
+    });
+  }
 }

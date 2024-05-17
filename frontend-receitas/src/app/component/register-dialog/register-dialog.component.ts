@@ -20,7 +20,21 @@ export class RegisterDialogComponent implements OnInit{
     @Inject(MAT_DIALOG_DATA) public data: Receita,
     private formBuilder: FormBuilder,
     private receitaService: ReceitaHttpclienteService
-  ) {}
+  ) {
+
+    if(this.data != null) {
+      console.log(this.data.categoria)
+      this.receitasForm = this.formBuilder.group({
+        nome: this.data.nome,
+        ingredientes:this.data.ingredientes,
+        modoPreparo: this.data.modoPreparo,
+        tempoPreparo: this.data.tempoPreparo,
+        rendimento: this.data.rendimento,
+        categoria: this.data.categoria
+        }
+      )
+    }
+  }
 
   ngOnInit() {
     this.receitasForm = this.formBuilder.group({
@@ -40,7 +54,8 @@ export class RegisterDialogComponent implements OnInit{
       this.receitaService.salvar(receita).subscribe({
         next: (result) => {
           console.log('Receita salva com sucesso:', result);
-          this.form.reset();
+          this.receitasForm.reset();
+          this.receitaService.listarTodos();
           this.fecharModal();
         },
         error: (err) => {
