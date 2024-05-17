@@ -1,14 +1,12 @@
 package com.crud.model.dto;
 import lombok.*;
 
-import java.time.LocalTime;
-
 @Data
 @ToString
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReceitaDTO {
+public class ReceitaCreateDTO {
     private String nome;
     private String ingredientes;
     private String modoPreparo;
