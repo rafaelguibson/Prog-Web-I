@@ -7,11 +7,13 @@ import com.crud.model.dto.ReceitaDTO;
 import com.crud.model.dto.ReceitaListDTO;
 import com.crud.model.dto.ReceitaUpdateDTO;
 import com.crud.service.ReceitaService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = "/api/receitas")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ReceitaController extends
 GenericCRUDController<
         ReceitaDTO, // DTO Geral

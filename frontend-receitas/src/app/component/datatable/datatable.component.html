@@ -1,1 +1,62 @@
-<p>datatable works!</p>
+<div class="mat-elevation-z8" style="padding: 20px; height: 100%">
+  <div class="container">
+    <table mat-table [dataSource]="dataSource" class="mat-table">
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef class="mat-header-center"> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <!-- Nome Column -->
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef class="mat-header-center"> Nome </th>
+        <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+      </ng-container>
+
+      <!-- Ingredientes Column -->
+      <ng-container matColumnDef="ingredientes">
+        <th mat-header-cell *matHeaderCellDef class="mat-header-center"> Ingredientes </th>
+        <td mat-cell *matCellDef="let element"> {{element.ingredientes}} </td>
+      </ng-container>
+
+      <!-- Modo Preparo Column -->
+      <ng-container matColumnDef="modoPreparo">
+        <th mat-header-cell *matHeaderCellDef class="mat-header-center"> Modo Preparo </th>
+        <td mat-cell *matCellDef="let element"> {{element.modoPreparo}} </td>
+      </ng-container>
+
+      <!-- Tempo Preparo Column -->
+      <ng-container matColumnDef="tempoPreparo">
+        <th mat-header-cell *matHeaderCellDef class="mat-header-center"> Tempo Preparo (min) </th>
+        <td mat-cell *matCellDef="let element"> {{element.tempoPreparo}} </td>
+      </ng-container>
+
+      <!-- Rendimento Column -->
+      <ng-container matColumnDef="rendimento">
+        <th mat-header-cell *matHeaderCellDef class="mat-header-center"> Rendimento </th>
+        <td mat-cell *matCellDef="let element"> {{element.rendimento}} </td>
+      </ng-container>
+
+      <!-- Categoria Column -->
+      <ng-container matColumnDef="categoria">
+        <th mat-header-cell *matHeaderCellDef class="mat-header-center"> Categoria </th>
+        <td mat-cell *matCellDef="let element"> {{element.categoria}} </td>
+      </ng-container>
+
+      <!-- Ações Column -->
+      <ng-container matColumnDef="acoes">
+        <th mat-header-cell *matHeaderCellDef class="mat-header-center"> Ações </th>
+        <td mat-cell *matCellDef="let row" style="width:100px;">
+          <a mat-button matTooltip="Editar"><i class="bi bi-pencil-square menu-icon"></i></a>
+          <a mat-button matTooltip="Excluir"><i class="bi bi-trash menu-icon"></i></a>
+          <a mat-button matTooltip="Detalhes"><i class="bi bi-card-list menu-icon"></i></a>
+
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>

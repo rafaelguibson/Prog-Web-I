@@ -9,7 +9,7 @@ import {Observable} from "rxjs";
 })
 export class ReceitaHttpclienteService {
 
-  private baseUrl = '/api/receitas';
+  private baseUrl = 'http://localhost:8080/api/receitas';
 
   constructor(private http: HttpClient) { }
 

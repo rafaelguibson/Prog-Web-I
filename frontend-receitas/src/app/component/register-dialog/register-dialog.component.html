@@ -1,19 +1,65 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
 <div class="panel" style="border: none; overflow: hidden">
   <div class="panel-heading dialog-title">
     <span class="header-space">Adicionar Receitas</span>
-    <a  style="cursor: pointer;"><i class="bi bi-x-circle-fill"
-                                                           matTooltip="Fechar Modal"></i></a>
+    <a style="cursor: pointer;" (click)="fecharModal()"><i class="bi bi-x-circle-fill" matTooltip="Fechar Modal"></i></a>
   </div>
 
   <div class="panel-body">
     <div class="form-group form-content">
+      <form [formGroup]="receitasForm" (ngSubmit)="onSubmit()" class="example-form">
+        <mat-card>
+          <mat-card-content>
+            <!-- Nome Field -->
+            <div class="form-row">
+              <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Nome</mat-label>
+                <input matInput formControlName="nome">
+              </mat-form-field>
+            </div>
 
+            <!-- Ingredientes Field -->
+            <div class="form-row">
+              <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Ingredientes</mat-label>
+                <textarea matInput formControlName="ingredientes"></textarea>
+              </mat-form-field>
+            </div>
+
+            <!-- Modo Preparo Field -->
+            <div class="form-row">
+              <mat-form-field  class="full-width">
+                <mat-label>Modo de Preparo</mat-label>
+                <textarea matInput formControlName="modoPreparo"></textarea>
+              </mat-form-field>
+            </div>
+
+            <!-- Linha paraTempo Preparo, Rendimento e Categoria -->
+
+
+            <div class="form-row flex-row">
+
+              <mat-form-field appearance="fill" class="half-width" style="padding-right: 10px;">
+                <mat-label>Tempo de Preparo (minutos)</mat-label>
+                <input matInput type="number" formControlName="tempoPreparo">
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" class="half-width" style="padding-right: 10px;">
+                <mat-label>Rendimento</mat-label>
+                <input matInput formControlName="rendimento">
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" class="half-width">
+                <mat-label>Categoria</mat-label>
+                <input matInput formControlName="categoria">
+              </mat-form-field>
+            </div>
+          </mat-card-content>
+          <mat-card-actions class="action-buttons">
+            <button mat-raised-button color="primary" type="submit">Salvar</button>
+            <button mat-raised-button color="warn" type="button" (click)="onCancel()">Cancelar</button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
     </div>
   </div>
 </div>
-

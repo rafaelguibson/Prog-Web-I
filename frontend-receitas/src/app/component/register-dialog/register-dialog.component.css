@@ -47,3 +47,20 @@ mat-card {
 .mat-card-content {
   padding: 5px;
 }
+.full-width {
+  width: 600px;
+}
+
+.half-width {
+  width: 198px;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;  /* Alinha os botões à direita */
+  margin-top: 16px;
+}
+
+.action-buttons button {
+  margin-left: 16px;  /* Adiciona espaço entre os botões */
+}

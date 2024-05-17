@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "RECEITA")
 @Getter
@@ -35,4 +37,12 @@ public class Receita implements GenericModel<Long>{
 
     @Column(name = "categoria", nullable = false)
     private int categoria;
+
+    @Column(updatable = false)
+    private Date dataCadastro;
+
+    @PrePersist
+    protected void onCreate() {
+        dataCadastro = new Date();
+    }
 }
