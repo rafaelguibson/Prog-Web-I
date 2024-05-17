@@ -29,6 +29,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatTooltip} from "@angular/material/tooltip";
 import { DialogDeleteComponent } from './component/dialog-delete/dialog-delete.component';
 import {MatDialogClose} from "@angular/material/dialog";
+import { DialogSucessComponent } from './component/dialog-sucess/dialog-sucess.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {MatDialogClose} from "@angular/material/dialog";
     NavbarComponent,
     DatatableComponent,
     RegisterDialogComponent,
-    DialogDeleteComponent
+    DialogDeleteComponent,
+    DialogSucessComponent
   ],
   imports: [
     BrowserModule,

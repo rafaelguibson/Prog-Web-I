@@ -4,6 +4,7 @@ import {ReceitaHttpclienteService} from "../../service/receita-httpcliente.servi
 import {DialogDeleteComponent} from "../dialog-delete/dialog-delete.component";
 import {MatDialog} from "@angular/material/dialog";
 import {RegisterDialogComponent} from "../register-dialog/register-dialog.component";
+import {DialogSucessComponent} from "../dialog-sucess/dialog-sucess.component";
 
 @Component({
   selector: 'app-datatable',
@@ -23,10 +24,24 @@ export class DatatableComponent implements OnInit{
   }
 
   openDialog(): void {
-    this.dialog.open(RegisterDialogComponent, {
+    const dialogRef =  this.dialog.open(RegisterDialogComponent, {
       width: '700px',
       height: '500px'
     });
+    dialogRef.afterClosed().subscribe(result => {
+      this.openDialogSucsess();
+      this.receitaService.listarTodos().subscribe((data: Receita[]) => {
+        this.dataSource = data;
+      });
+    });
+  }
+
+  openDialogSucsess() {
+    const dialogRef = this.dialog.open(DialogSucessComponent,
+      {
+        height: '150px',
+        width: '400px',
+      });
   }
 
   openDialogDelete(receita: Receita) {
@@ -34,7 +49,7 @@ export class DatatableComponent implements OnInit{
       {
         height: '200px',
         width: '400px',
-        data: { receita }
+        data: {receita}
       });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -49,7 +64,7 @@ export class DatatableComponent implements OnInit{
     this.dialog.open(RegisterDialogComponent, {
       width: '700px',
       height: '500px',
-      data: { receita }
+      data: receita
     });
   }
 }

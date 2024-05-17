@@ -64,3 +64,6 @@ mat-card {
 .action-buttons button {
   margin-left: 16px;  /* Adiciona espaço entre os botões */
 }
+.header-space {
+  flex: 1 1 auto;
+}
