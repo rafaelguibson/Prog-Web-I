@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { NavbarComponent } from './menu/navbar/navbar.component';
 import {MatToolbar} from "@angular/material/toolbar";
-import {MatButton, MatIconButton} from "@angular/material/button";
+import {MatAnchor, MatButton, MatIconButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import { DatatableComponent } from './component/datatable/datatable.component';
 import { RegisterDialogComponent } from './component/register-dialog/register-dialog.component';
@@ -27,13 +27,16 @@ import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatTooltip} from "@angular/material/tooltip";
+import { DialogDeleteComponent } from './component/dialog-delete/dialog-delete.component';
+import {MatDialogClose} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     DatatableComponent,
-    RegisterDialogComponent
+    RegisterDialogComponent,
+    DialogDeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,9 @@ import {MatTooltip} from "@angular/material/tooltip";
     MatCard,
     MatCardHeader,
     MatCardContent,
-    MatTooltip
+    MatTooltip,
+    MatAnchor,
+    MatDialogClose
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: `pt-BR`},
