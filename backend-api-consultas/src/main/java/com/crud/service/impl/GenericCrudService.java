@@ -2,11 +2,16 @@ package com.crud.service.impl;
 
 
 import com.crud.exception.DataException;
+import com.crud.exception.MandatoryException;
 import com.crud.mapper.GenericUpdateMapper;
 import com.crud.model.GenericModel;
+import com.crud.model.Ingrediente;
+import com.crud.model.Receita;
 import com.crud.service.CrudService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 import java.util.Objects;
@@ -32,11 +37,28 @@ public abstract class GenericCrudService<
     }
 
     @Override
+    @Transactional
     public MODEL create(MODEL dado) {
         prepareToCreate(dado);
         validateMandatoryFields(dado);
         validateBusinessLogic(dado);
         validateBusinessLogicForInsert(dado);
+        // Caso específico para Receita
+        if (dado instanceof Receita) {
+            Receita receita = (Receita) dado;
+
+            // Validar ingredientes
+            if (CollectionUtils.isEmpty(receita.getIngredientes())) {
+                throw new MandatoryException("A receita deve ter ingredientes.");
+            }
+
+            // Validar lógica de negócio para ingredientes, se necessário
+
+            // Salvar ingredientes associados à receita
+            for (Ingrediente ingrediente : receita.getIngredientes()) {
+                ingrediente.setReceita(receita);
+            }
+        }
         return repository.save(dado);
     }
 

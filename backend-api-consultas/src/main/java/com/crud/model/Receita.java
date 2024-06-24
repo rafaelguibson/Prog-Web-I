@@ -1,5 +1,6 @@
 package com.crud.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "RECEITA")
@@ -23,8 +25,9 @@ public class Receita implements GenericModel<Long>{
     @Column(name = "nome", nullable = false, unique = true)
     private String nome;
 
-    @Column(name = "ingredientes", nullable = false)
-    private String ingredientes;
+    @OneToMany(mappedBy = "receita", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
+    private List<Ingrediente> ingredientes;
 
     @Column(name = "modoPreparo", nullable = false, length = 10000)
     private String modoPreparo;

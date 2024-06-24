@@ -1,5 +1,8 @@
 package com.crud.model.dto;
+import com.crud.model.Ingrediente;
 import lombok.*;
+
+import java.util.List;
 
 @Data
 @ToString
@@ -9,7 +12,7 @@ import lombok.*;
 public class ReceitaUpdateDTO {
     private Long id;
     private String nome;
-    private String ingredientes;
+    private List<Ingrediente> ingredientes;
     private String modoPreparo;
     private int tempoPreparo;
     private String rendimento;
