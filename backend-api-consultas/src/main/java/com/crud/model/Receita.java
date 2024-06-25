@@ -25,6 +25,9 @@ public class Receita implements GenericModel<Long>{
     @Column(name = "nome", nullable = false, unique = true)
     private String nome;
 
+    @Column(name = "descricao", nullable = false, unique = true, length = 10000)
+    private String descricao;
+
     @OneToMany(mappedBy = "receita", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonBackReference
     private List<Ingrediente> ingredientes;

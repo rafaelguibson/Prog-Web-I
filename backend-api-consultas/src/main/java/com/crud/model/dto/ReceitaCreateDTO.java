@@ -12,6 +12,7 @@ import java.util.List;
 public class ReceitaCreateDTO {
     private String nome;
     private List<Ingrediente> ingredientes;
+    private String descricao;
     private String modoPreparo;
     private int tempoPreparo;
     private String rendimento;
