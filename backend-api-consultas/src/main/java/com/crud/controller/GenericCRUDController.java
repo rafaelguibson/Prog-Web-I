@@ -3,7 +3,10 @@ package com.crud.controller;
 
 import com.crud.mapper.GenericMapper;
 import com.crud.model.GenericModel;
+import com.crud.model.Receita;
+import com.crud.model.dto.ReceitaListDTO;
 import com.crud.service.CrudService;
+import com.crud.service.ReceitaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -72,5 +75,12 @@ public abstract class GenericCRUDController<
         DTO dtoResult = mapper.toDTO(service.deleteById(id));
         return ResponseEntity.ok(dtoResult);
     }
+    @Autowired
+    private ReceitaService receitaService;
 
+    @GetMapping("/sorted")
+    public ResponseEntity<List<Receita>> listAllSorted() {
+        List<Receita> receitas = receitaService.listAllSorted();
+        return ResponseEntity.ok(receitas);
+    }
 }

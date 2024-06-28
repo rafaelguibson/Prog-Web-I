@@ -10,6 +10,7 @@ import com.crud.service.ReceitaService;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -55,5 +56,10 @@ public class ReceitaServiceImpl extends GenericCrudService<Receita, Long, Receit
         ){
             throw new MandatoryException("Campos obrigatórios não preenchidos");
         }
+    }
+
+    @Override
+    public List<Receita> listAllSorted() {
+        return repository.findAllByOrderByDataCadastroDesc();
     }
 }

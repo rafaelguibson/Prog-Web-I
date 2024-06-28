@@ -1,5 +1,7 @@
 package com.crud.controller;
 
+import com.crud.exception.InvalidPasswordException;
+import com.crud.exception.UserNotFoundException;
 import com.crud.model.User;
 import com.crud.model.dto.LoginRequestDTO;
 import com.crud.model.dto.RegisterRequestDTO;
@@ -26,12 +28,13 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody LoginRequestDTO body){
-        User user = this.userRepository.findByEmail(body.email()).orElseThrow(() -> new RuntimeException("User not found"));
+        User user = this.userRepository.findByEmail(body.email()).orElseThrow(UserNotFoundException::new);
         if(passwordEncoder.matches(body.password(), user.getPassword())){
             String token = tokenService.generateToken(user);
             return ResponseEntity.ok(new ResponseDTO(user.getUsername(), token));
+        } else {
+            throw new InvalidPasswordException();
         }
-        return ResponseEntity.badRequest().build();
     }
 
     @PostMapping("/register")

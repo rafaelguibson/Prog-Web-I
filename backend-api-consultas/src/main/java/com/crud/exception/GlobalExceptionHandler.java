@@ -20,9 +20,19 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleNotFoundException(ReceitaNaoEncontradaException e) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<String> handleUserNotFoundException(UserNotFoundException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
+
+    @ExceptionHandler(InvalidPasswordException.class)
+    public ResponseEntity<String> handleInvalidPasswordException(InvalidPasswordException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleGenericException(Exception e) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Ocorreu um erro interno no servidor");
     }
+
 }
