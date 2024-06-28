@@ -1,6 +1,7 @@
 package com.crud.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,9 +29,8 @@ public class Ingrediente {
     @Column(name = "unidade_medida", nullable = false)
     private String unidadeMedida;
 
-    // Many-to-one relationship with Receita entity
     @ManyToOne(fetch = FetchType.EAGER)
-//    @JsonManagedReference
     @JoinColumn(name = "receita_id", nullable = false)
+    @JsonBackReference
     private Receita receita;
 }
